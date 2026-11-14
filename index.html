@@ -1,4 +1,4 @@
-
+```html
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -18,445 +18,168 @@ html {
 }
 
 body {
-    font-family: Arial, "Noto Sans JP", sans-serif;
-    background: #111;
+    font-family: "Noto Sans JP", "Yu Gothic", "Meiryo", sans-serif;
+    background: #101010;
     color: white;
-    padding-bottom: 120px;
+    line-height: 1.9;
 }
 
-/* HEADER */
+/* ヘッダー */
 header {
     background: #440000;
-    padding: 22px 8%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 2px solid #cc0000;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    z-index: 10;
 }
 
 header h1 {
-    font-size: 25px;
-    letter-spacing: 3px;
+    font-size: 30px;
+    letter-spacing: 5px;
+    font-weight: 900;
 }
 
-header span {
-    color: #ff3333;
-}
-
-/* HERO */
-.hero {
-    height: 550px;
-    position: relative;
+/* メニュー */
+nav {
+    background: #1b1b1b;
     display: flex;
-    flex-direction: column;
     justify-content: center;
-    padding: 50px 10%;
+    flex-wrap: wrap;
+    gap: 25px;
+    padding: 12px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: #ff4545;
+}
+
+/* メインビジュアル */
+.hero {
+    min-height: 540px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px 20px;
+    position: relative;
     overflow: hidden;
 
     background:
-        linear-gradient(
-            90deg,
-            rgba(0,0,0,0.9),
-            rgba(30,0,0,0.55),
-            rgba(0,0,0,0.1)
-        ),
-        url("https://pbs.twimg.com/media/HG5KRf1bcAEDldY.jpg")
-        center center / cover no-repeat;
+    linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.75)),
+    url("https://pbs.twimg.com/media/HG5KRf1bcAEDldY.jpg");
+
+    background-size: cover;
+    background-position: center;
 }
 
-/* 光の演出 */
 .hero::before {
     content: "";
     position: absolute;
-    inset: 0;
-    background: linear-gradient(
-        120deg,
-        transparent 30%,
-        rgba(255,0,0,0.15),
-        transparent 70%
-    );
-    animation: light 4s infinite alternate;
-}
-
-@keyframes light {
-    from {
-        opacity: 0.2;
-    }
-    to {
-        opacity: 1;
-    }
+    width: 500px;
+    height: 500px;
+    background: rgba(255, 0, 0, 0.18);
+    border-radius: 50%;
+    filter: blur(100px);
+    animation: glow 4s infinite alternate;
 }
 
 .hero-content {
     position: relative;
-    z-index: 1;
-    animation: appear 1.2s ease-out;
-}
-
-@keyframes appear {
-    from {
-        opacity: 0;
-        transform: translateY(35px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    animation: appear 1.5s ease-out;
 }
 
 .hero h2 {
-    font-size: clamp(38px, 7vw, 75px);
+    font-size: clamp(40px, 8vw, 75px);
     font-weight: 900;
-    line-height: 1.1;
-    letter-spacing: 3px;
-    margin-bottom: 25px;
-}
-
-.hero h2 span {
-    color: #ff3333;
+    letter-spacing: 4px;
+    text-shadow: 0 0 20px #ff0000;
 }
 
 .hero p {
-    font-size: 17px;
-    line-height: 2;
-    margin-bottom: 30px;
-    color: #eee;
+    font-size: 20px;
+    margin: 20px 0 30px;
 }
 
-.hero a {
+.hero-button {
     display: inline-block;
-    padding: 15px 35px;
+    padding: 14px 35px;
     background: #cc0000;
     color: white;
     text-decoration: none;
     font-weight: bold;
-    letter-spacing: 2px;
+    border-radius: 5px;
     transition: 0.3s;
 }
 
-.hero a:hover {
+.hero-button:hover {
     background: white;
-    color: #440000;
-    transform: translateY(-4px);
+    color: #cc0000;
+    transform: scale(1.08);
 }
 
-/* 動くメッセージ */
-.marquee {
-    background: #cc0000;
+/* 流れる文字 */
+.ticker {
+    background: #8e0000;
     overflow: hidden;
     white-space: nowrap;
-    padding: 13px 0;
+    padding: 12px 0;
+    font-weight: 900;
+    letter-spacing: 3px;
 }
 
-.marquee p {
+.ticker span {
     display: inline-block;
-    font-size: 17px;
-    font-weight: bold;
-    letter-spacing: 4px;
-    animation: scroll 18s linear infinite;
+    animation: ticker 18s linear infinite;
 }
 
-@keyframes scroll {
-    from {
-        transform: translateX(100%);
-    }
-    to {
-        transform: translateX(-100%);
-    }
-}
-
-/* MAIN */
-main {
-    max-width: 1100px;
-    margin: auto;
-    padding: 65px 25px;
-    color: #cc0000;
-}
-
+/* セクション */
 section {
-    background: #1d1d1d;
-    padding: 40px;
-    margin-bottom: 35px;
-    border-left: 5px solid #cc0000;
-    transition: 0.3s;
+    padding: 75px 8%;
 }
 
-section:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(204,0,0,0.2);
-}
-
-section h2 {
-    font-size: 27px;
-    color: white;
-    margin-bottom: 22px;
-    letter-spacing: 2px;
-}
-
-section h2 span {
-    color: #ff3333;
-}
-
-section p {
-    color: #ccc;
-    font-size: 16px;
-    line-height: 2.2;
-}
-
-.highlight {
-    color: #ff4444;
-    font-weight: bold;
-}
-
-/* B.LEAGUE */
-.bleague {
-    margin-top: 35px;
-    padding: 45px 20px;
+.section-title {
+    font-size: clamp(26px, 5vw, 38px);
+    color: #ff4545;
     text-align: center;
-    background: linear-gradient(135deg, #660000, #1a0000);
-    border: 1px solid #990000;
+    margin-bottom: 15px;
+    font-weight: 900;
 }
 
-.bleague h3 {
-    font-size: 28px;
-    margin-bottom: 20px;
-}
-
-.bleague p {
-    margin-bottom: 25px;
-}
-
-.bleague a {
-    display: inline-block;
-    padding: 15px 35px;
-    background: white;
-    color: #440000;
-    text-decoration: none;
-    font-weight: bold;
-    transition: 0.3s;
-}
-
-.bleague a:hover {
-    background: #cc0000;
-    color: white;
-}
-
-/* FOOTER */
-footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background: #440000;
-    border-top: 2px solid #cc0000;
+.section-lead {
     text-align: center;
-    padding: 12px;
-    z-index: 10;
+    margin-bottom: 45px;
+    color: #dddddd;
+    font-size: 17px;
 }
 
-footer p {
-    font-size: 12px;
+/* カード */
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 25px;
 }
 
-.social-links {
-    margin: 7px 0;
+.card {
+    background: #202020;
+    border: 1px solid #4a2424;
+    border-radius: 12px;
+    padding: 28px;
+    transition: 0.4s;
+    opacity: 0;
+    transform: translateY(30px);
 }
 
-.social-links a {
-    color: #ffaaaa;
-    text-decoration: none;
-    margin: 0 12px;
-    font-size: 13px;
+.card.show {
+    opacity: 1;
+    transform: translateY(0);
 }
 
-.social-links a:hover {
-    color: white;
-}
-
-.copyright {
-    color: #aaa;
-    font-size: 10px;
-}
-
-/* MOBILE */
-@media (max-width: 600px) {
-
-    header {
-        padding: 18px;
-    }
-
-    header h1 {
-        font-size: 20px;
-    }
-
-    .hero {
-        height: 470px;
-        padding: 30px 25px;
-        background-position: center;
-    }
-
-    .hero h2 {
-        font-size: 42px;
-    }
-
-    .hero p {
-        font-size: 14px;
-    }
-
-    main {
-        padding: 35px 15px;
-    }
-
-    section {
-        padding: 25px 20px;
-    }
-
-    section h2 {
-        font-size: 22px;
-    }
-
-    section p {
-        font-size: 14px;
-    }
-
-    .bleague h3 {
-        font-size: 22px;
-    }
-
-    footer {
-        padding: 9px 3px;
-    }
-
-    .social-links a {
-        margin: 0 7px;
-        font-size: 12px;
-    }
-}
-
-</style>
-</head>
-
-<body>
-
-<!-- HEADER -->
-<header>
-    <h1>BASKETBALL <span>BOOK</span></h1>
-</header>
-
-<!-- MAIN VISUAL -->
-<div class="hero">
-    <div class="hero-content">
-        <h2>
-            FEEL THE<br>
-            <span>GAME.</span>
-        </h2>
-
-        <p>
-            知らなかった世界が、ここにある。<br>
-            一瞬のプレーが、心を動かす。<br>
-            バスケットボールの熱狂を体感しよう。
-        </p>
-
-        <a href="#about">DISCOVER MORE →</a>
-    </div>
-</div>
-
-<!-- MOVING MESSAGE -->
-<div class="marquee">
-    <p>
-        ONE TEAM. ONE DREAM. &nbsp; BASKETBALL IS AMAZING.
-        &nbsp; FEEL THE GAME. &nbsp;
-        ONE TEAM. ONE DREAM. &nbsp; BASKETBALL IS AMAZING.
-    </p>
-</div>
-
-<!-- MAIN -->
-<main>
-
-    <section id="about">
-        <h2>
-            <span>01.</span> バスケットボールの魅力
-        </h2>
-
-        <p>
-            バスケットボールは、スピード・テクニック・
-            チームワークが一つになったエキサイティングなスポーツです。
-            <br><br>
-
-            高く飛び上がるダンクシュート、
-            試合終了間際の逆転劇、
-            選手同士の激しい攻防。
-            <br><br>
-
-            ルールを知らなくても大丈夫。
-            <span class="highlight">
-                ボールがリングに入った瞬間の興奮は、
-                誰でも楽しめます。
-            </span>
-            <br><br>
-
-            まずは一度、バスケットボールの世界を
-            のぞいてみませんか？
-        </p>
-    </section>
-
-    <section id="game">
-        <h2>
-            <span>02.</span> B.LEAGUEを観に行こう
-        </h2>
-
-        <p>
-            日本のプロバスケットボールリーグ「B.LEAGUE」。
-            <br><br>
-
-            目の前で繰り広げられる迫力満点のプレー、
-            会場を包み込む歓声、
-            音楽や照明による演出。
-            <br><br>
-
-            テレビや動画では味わえない、
-            <span class="highlight">
-                現地観戦ならではの感動
-            </span>
-            が待っています。
-            <br><br>
-
-            友達と一緒に、家族と一緒に、
-            もちろん一人でも楽しめます。
-        </p>
-
-        <div class="bleague">
-            <h3>THE GAME IS WAITING.</h3>
-
-            <p>
-                次の週末は、バスケットボール観戦へ。<br>
-                あなたも会場で熱狂を体験しよう！
-            </p>
-
-            <a href="https://www.bleague.jp/"
-               target="_blank"
-               rel="noopener noreferrer">
-                B.LEAGUE公式サイト →
-            </a>
-        </div>
-    </section>
-
-</main>
-
-<!-- FOOTER -->
-<footer>
-    <p>CONTACT：info@example.com</p>
-
-    <div class="social-links">
-        <a href="https://www.instagram.com/">Instagram</a>
-        <a href="https://www.facebook.com/">Facebook</a>
-        <a href="https://x.com/">X</a>
-    </div>
-
-    <p class="copyright">
-        &copy; 2026 BASKETBALL BOOK
-    </p>
-</footer>
-
-</body>
-</html>
+.card:hover {
+    transform: translateY
