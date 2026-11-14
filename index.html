@@ -1,0 +1,160 @@
+
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Website</title>
+
+    <style>
+        /* 全体設定 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            min-height: 100vh;
+            padding-bottom: 160px;
+        }
+
+        /* ヘッダー */
+        header {
+            background-color:#FF773E ;
+            color: white;
+            text-align: center;
+            padding: 25px;
+        }
+
+        header h1 {
+            font-size: 28px;
+        }
+
+        /* メイン */
+        main {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
+            color: #cc0000;
+        }
+
+        section {
+            background-color: white;
+            padding: 30px;
+            margin-bottom: 25px;
+            border-radius: 8px;
+        }
+
+        section h2 {
+            color:#FF773E ;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+
+        /* フッター */
+        footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color:#FF773E ;
+            color: white;
+            text-align: center;
+            padding: 15px;
+        }
+
+        .social-links {
+            margin: 10px 0;
+        }
+
+        .social-links a {
+            color: #85c1e9;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .social-links a:hover {
+            text-decoration: underline;
+        }
+
+        .copyright {
+            font-size: 12px;
+            margin-top: 10px;
+        }
+
+        /* スマートフォン対応 */
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 23px;
+            }
+
+            main {
+                margin: 20px auto;
+            }
+
+            section {
+                padding: 20px;
+            }
+
+            footer {
+                font-size: 13px;
+            }
+
+            .social-links a {
+                margin: 0 5px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ヘッダー -->
+    <header>
+        <h1>basketballbook</h1>
+    </header>
+
+    <!-- メインコンテンツ -->
+    <main>
+
+        <section>
+            <h2>バスケットボール</h2>
+            <p>
+                このWebサイトへようこそ。
+                バスケットボールの面白さについて紹介します。
+            </p>
+        </section>
+
+        <section>
+            <h2>サービス紹介</h2>
+            <p>
+                お客様が楽しめる最新の情報を提供しています。
+                ぜひお気軽にお問い合わせください。
+            </p>
+        </section>
+
+    </main>
+
+    <!-- フッター -->
+    <footer>
+        <p>連絡先：info@example.com</p>
+
+        <div class="social-links">
+            <a href="https://www.instagram.com/">Instagram</a>
+            <a href="https://www.facebook.com/">Facebook</a>
+            <a href="https://www.x.com/">X</a>
+        </div>
+
+        <p class="copyright">
+            &copy; 2026 My Website
+        </p>
+    </footer>
+
+</body>
+</html>
