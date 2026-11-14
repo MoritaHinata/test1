@@ -7,756 +7,1090 @@
 
 <style>
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 html {
-    scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
 
 body {
-    font-family: Arial, "Noto Sans JP", "Yu Gothic", sans-serif;
-    background: #111;
-    color: white;
-    padding-bottom: 120px;
-    line-height: 1.9;
+  background: #080808;
+  color: #fff;
+  font-family: "Arial", "Noto Sans JP", sans-serif;
+  line-height: 1.8;
+  overflow-x: hidden;
+}
+
+:root {
+  --red: #cc0000;
+  --dark-red: #440000;
+  --gray: #171717;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
 }
 
 /* HEADER */
 header {
-    background: #440000;
-    padding: 22px 8%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 2px solid #cc0000;
+  width: 100%;
+  padding: 20px 7%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #080808;
+  border-bottom: 1px solid #292929;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
-header h1 {
-    font-size: 25px;
-    letter-spacing: 3px;
+.logo {
+  font-size: 22px;
+  font-weight: 900;
+  letter-spacing: 3px;
+  color: white;
 }
 
-header span {
-    color: #ff3333;
+.logo span {
+  color: var(--red);
 }
 
-/* NAVIGATION */
 nav {
-    background: #202020;
-    padding: 13px 10px;
-    text-align: center;
-    position: sticky;
-    top: 0;
-    z-index: 9;
+  display: flex;
+  gap: 25px;
+  font-size: 13px;
+  letter-spacing: 1px;
 }
 
 nav a {
-    color: white;
-    text-decoration: none;
-    margin: 0 13px;
-    font-size: 14px;
-    font-weight: bold;
-    transition: 0.3s;
+  transition: .3s;
 }
 
 nav a:hover {
-    color: #ff4444;
+  color: var(--red);
 }
 
 /* HERO */
 .hero {
-    min-height: 550px;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 50px 10%;
-    overflow: hidden;
-
-    background:
-        linear-gradient(
-            90deg,
-            rgba(0,0,0,0.9),
-            rgba(30,0,0,0.55),
-            rgba(0,0,0,0.1)
-        ),
-        url("https://pbs.twimg.com/media/HG5KRf1bcAEDldY.jpg")
-        center center / cover no-repeat;
+  height: 78vh;
+  min-height: 480px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  overflow: hidden;
+  background:
+    linear-gradient(rgba(0,0,0,.45), rgba(0,0,0,.85)),
+    url("https://pbs.twimg.com/media/HG5KRf1bcAEDldY.jpg")
+    center/cover no-repeat;
 }
 
-.hero::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-        120deg,
-        transparent 30%,
-        rgba(255,0,0,0.15),
-        transparent 70%
-    );
-    animation: light 4s infinite alternate;
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(204,0,0,.28),
+    transparent
+  );
+  animation: lightMove 5s infinite;
 }
 
-@keyframes light {
-    from { opacity: 0.2; }
-    to { opacity: 1; }
+@keyframes lightMove {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
 }
 
 .hero-content {
-    position: relative;
-    z-index: 1;
-    animation: appear 1.2s ease-out;
+  position: relative;
+  z-index: 2;
+  animation: fadeUp 1.2s ease;
 }
 
-@keyframes appear {
-    from {
-        opacity: 0;
-        transform: translateY(35px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.hero h2 {
-    font-size: clamp(38px, 7vw, 75px);
-    font-weight: 900;
-    line-height: 1.1;
-    letter-spacing: 3px;
-    margin-bottom: 25px;
-}
-
-.hero h2 span {
-    color: #ff3333;
+.hero h1 {
+  font-size: clamp(40px, 8vw, 90px);
+  font-weight: 900;
+  letter-spacing: 5px;
+  line-height: 1.2;
+  text-shadow: 0 0 25px rgba(204,0,0,.7);
 }
 
 .hero p {
-    font-size: 17px;
-    line-height: 2;
-    margin-bottom: 30px;
-    color: #eee;
+  margin-top: 20px;
+  letter-spacing: 5px;
+  font-size: 14px;
 }
 
-.hero a {
-    display: inline-block;
-    padding: 15px 35px;
-    background: #cc0000;
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    letter-spacing: 2px;
-    transition: 0.3s;
+.hero-line {
+  width: 80px;
+  height: 4px;
+  background: var(--red);
+  margin: 25px auto;
 }
 
-.hero a:hover {
-    background: white;
-    color: #440000;
-    transform: translateY(-4px);
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(35px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-/* MOVING MESSAGE */
+/* MARQUEE */
 .marquee {
-    background: #cc0000;
-    overflow: hidden;
-    white-space: nowrap;
-    padding: 13px 0;
+  background: var(--red);
+  overflow: hidden;
+  white-space: nowrap;
+  padding: 12px 0;
+  font-weight: bold;
+  letter-spacing: 3px;
 }
 
-.marquee p {
-    display: inline-block;
-    font-size: 17px;
-    font-weight: bold;
-    letter-spacing: 4px;
-    animation: scroll 18s linear infinite;
+.marquee-track {
+  display: inline-block;
+  animation: marquee 22s linear infinite;
 }
 
-@keyframes scroll {
-    from { transform: translateX(100%); }
-    to { transform: translateX(-100%); }
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
 }
 
-/* MAIN */
+/* COMMON */
 main {
-    max-width: 1150px;
-    margin: auto;
-    padding: 65px 25px;
-    color: #cc0000;
+  max-width: 1100px;
+  margin: auto;
+  padding: 70px 25px 100px;
 }
 
 section {
-    background: #1d1d1d;
-    padding: 40px;
-    margin-bottom: 35px;
-    border-left: 5px solid #cc0000;
-    border-radius: 5px;
+  margin-bottom: 110px;
+  scroll-margin-top: 100px;
 }
 
-section h2 {
-    font-size: 27px;
-    color: white;
-    margin-bottom: 22px;
-    letter-spacing: 2px;
+.section-number {
+  color: var(--red);
+  font-size: 14px;
+  font-weight: bold;
+  letter-spacing: 4px;
 }
 
-section h2 span {
-    color: #ff3333;
+.section-title {
+  font-size: clamp(27px, 5vw, 42px);
+  margin: 5px 0 15px;
+  font-weight: 900;
 }
 
-section p {
-    color: #ccc;
-    font-size: 16px;
-    line-height: 2.2;
+.section-description {
+  color: #aaa;
+  margin-bottom: 35px;
 }
 
-.highlight {
-    color: #ff5555;
-    font-weight: bold;
+.red-line {
+  width: 65px;
+  height: 4px;
+  background: var(--red);
+  margin-bottom: 30px;
 }
 
-/* INFORMATION CARDS */
-.cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 20px;
-    margin-top: 30px;
+.sub-title {
+  font-size: 23px;
+  margin: 45px 0 20px;
+  border-left: 4px solid var(--red);
+  padding-left: 15px;
+}
+
+/* CARDS */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
 }
 
 .card {
-    background: #292929;
-    border: 1px solid #4a2525;
-    border-radius: 10px;
-    padding: 25px;
-    transition: 0.3s;
+  background: var(--gray);
+  padding: 25px;
+  border: 1px solid #292929;
+  border-radius: 8px;
+  transition: .3s;
 }
 
 .card:hover {
-    transform: translateY(-7px);
-    border-color: #ff3333;
-    box-shadow: 0 8px 25px rgba(204,0,0,0.2);
-}
-
-.card .icon {
-    font-size: 35px;
-    margin-bottom: 10px;
+  transform: translateY(-5px);
+  border-color: var(--red);
+  box-shadow: 0 8px 25px rgba(204,0,0,.15);
 }
 
 .card h3 {
-    color: #ff5555;
-    font-size: 20px;
-    margin-bottom: 10px;
+  color: #fff;
+  margin-bottom: 10px;
+  font-size: 18px;
 }
 
 .card p {
-    font-size: 14px;
-    line-height: 1.9;
+  color: #aaa;
+  font-size: 14px;
 }
 
-/* SECTION TITLE */
-.sub-title {
-    font-size: 23px;
-    color: white;
-    margin-top: 45px;
-    margin-bottom: 15px;
-    border-bottom: 2px solid #660000;
-    padding-bottom: 10px;
-}
-
-/* ALL STAR */
-.allstar {
-    margin-top: 30px;
-    padding: 35px 25px;
-    text-align: center;
-    background: linear-gradient(135deg, #660000, #1a0000);
-    border: 1px solid #990000;
-    border-radius: 10px;
-}
-
-.allstar h3 {
-    font-size: clamp(28px, 5vw, 45px);
-    color: white;
-    text-shadow: 0 0 15px red;
-    margin-bottom: 15px;
-}
-
-.allstar p {
-    color: #eee;
-    margin-bottom: 15px;
+.card-icon {
+  font-size: 30px;
+  margin-bottom: 10px;
 }
 
 /* RULES */
-.rule-card {
-    display: flex;
-    gap: 20px;
-    align-items: flex-start;
-    background: #292929;
-    border-radius: 10px;
-    padding: 22px;
-    margin-top: 15px;
-    border-left: 4px solid #cc0000;
-    transition: 0.3s;
-}
-
-.rule-card:hover {
-    background: #353030;
-    transform: translateX(5px);
-}
-
 .rule-number {
-    color: #ff5555;
-    font-size: 23px;
-    font-weight: bold;
-    min-width: 75px;
+  color: var(--red);
+  font-weight: 900;
+  font-size: 22px;
+  margin-right: 8px;
 }
 
-.rule-card h3 {
-    color: white;
-    font-size: 19px;
-    margin-bottom: 5px;
+/* GAME AREA */
+.game-box {
+  background:
+    linear-gradient(145deg, #250000, #111 65%);
+  border: 1px solid #6b0000;
+  border-radius: 12px;
+  padding: 35px 25px;
+  text-align: center;
+  margin-top: 25px;
+  overflow: hidden;
 }
 
-.rule-card p {
-    font-size: 14px;
+.game-label {
+  color: #ff5555;
+  letter-spacing: 4px;
+  font-size: 12px;
+  font-weight: bold;
 }
 
-/* BLEAGUE */
-.bleague {
-    margin-top: 35px;
-    padding: 45px 20px;
-    text-align: center;
-    background: linear-gradient(135deg, #660000, #1a0000);
-    border: 1px solid #990000;
-    border-radius: 10px;
+.game-box h3 {
+  font-size: 27px;
+  margin: 8px 0;
 }
 
-.bleague h3 {
-    font-size: 28px;
-    margin-bottom: 20px;
-    color: white;
+.game-description {
+  color: #bbb;
+  font-size: 14px;
 }
 
-.bleague p {
-    margin-bottom: 25px;
+.basketball {
+  font-size: 75px;
+  display: inline-block;
+  margin: 20px 0;
+  filter: drop-shadow(0 5px 10px rgba(0,0,0,.5));
 }
 
-.bleague a {
-    display: inline-block;
-    padding: 15px 35px;
-    background: white;
-    color: #440000;
-    text-decoration: none;
-    font-weight: bold;
-    transition: 0.3s;
+.basketball.shoot {
+  animation: shootBall .8s ease-in-out;
 }
 
-.bleague a:hover {
-    background: #cc0000;
-    color: white;
+@keyframes shootBall {
+  0% { transform: translateY(0) scale(1); }
+  45% { transform: translate(70px, -130px) rotate(180deg) scale(.8); }
+  75% { transform: translate(110px, -60px) rotate(300deg) scale(.65); }
+  100% { transform: translate(0, 0) scale(1); }
+}
+
+.score-board {
+  display: flex;
+  justify-content: center;
+  gap: 35px;
+  margin: 20px 0;
+}
+
+.score-item {
+  min-width: 90px;
+}
+
+.score-item small {
+  display: block;
+  color: #aaa;
+  font-size: 12px;
+}
+
+.score-item strong {
+  font-size: 35px;
+  color: white;
+}
+
+.game-message {
+  min-height: 35px;
+  margin: 12px 0;
+  color: #ff7777;
+  font-weight: bold;
+}
+
+.game-button {
+  border: none;
+  background: var(--red);
+  color: white;
+  padding: 13px 30px;
+  border-radius: 4px;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: .3s;
+  margin: 5px;
+}
+
+.game-button:hover {
+  background: #ff2222;
+  transform: scale(1.05);
+}
+
+.game-button.secondary {
+  background: #333;
+  border: 1px solid #666;
+}
+
+.game-button.secondary:hover {
+  background: #555;
+}
+
+/* QUIZ */
+.quiz-box {
+  background: #151515;
+  border: 1px solid #333;
+  border-radius: 10px;
+  padding: 30px;
+  margin-top: 25px;
+}
+
+.quiz-progress {
+  color: #ff5555;
+  font-size: 13px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.quiz-question {
+  font-size: 21px;
+  font-weight: bold;
+  margin: 15px 0 25px;
+}
+
+.quiz-options {
+  display: grid;
+  gap: 12px;
+}
+
+.quiz-option {
+  padding: 14px;
+  background: #252525;
+  border: 1px solid #444;
+  border-radius: 5px;
+  color: white;
+  text-align: left;
+  font-size: 15px;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.quiz-option:hover:not(:disabled) {
+  border-color: var(--red);
+  background: #351010;
+}
+
+.quiz-option:disabled {
+  cursor: default;
+  opacity: .8;
+}
+
+.quiz-option.correct {
+  background: #12351b;
+  border-color: #2d9d4b;
+}
+
+.quiz-option.wrong {
+  background: #451010;
+  border-color: var(--red);
+}
+
+.quiz-feedback {
+  min-height: 55px;
+  padding-top: 18px;
+  color: #ddd;
+  font-size: 14px;
+}
+
+.quiz-next {
+  margin-top: 15px;
+}
+
+/* B.LEAGUE */
+.bleague-banner {
+  background: linear-gradient(120deg, #350000, #171717);
+  border: 1px solid #5c0000;
+  padding: 30px;
+  border-radius: 10px;
+  margin: 30px 0;
+}
+
+.bleague-banner h3 {
+  font-size: 25px;
+  margin-bottom: 10px;
+}
+
+.bleague-banner p {
+  color: #ccc;
+  font-size: 14px;
+}
+
+.official-link {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 22px;
+  background: var(--red);
+  border-radius: 4px;
+  font-weight: bold;
+  transition: .3s;
+}
+
+.official-link:hover {
+  background: #ff2222;
 }
 
 /* FOOTER */
 footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background: #440000;
-    border-top: 2px solid #cc0000;
-    text-align: center;
-    padding: 12px;
-    z-index: 10;
+  background: #111;
+  border-top: 1px solid #333;
+  text-align: center;
+  padding: 40px 20px;
+  color: #888;
+  font-size: 12px;
 }
 
-footer p {
-    font-size: 12px;
+footer .footer-logo {
+  color: white;
+  font-size: 20px;
+  font-weight: 900;
+  letter-spacing: 3px;
+  margin-bottom: 10px;
+}
+
+footer .footer-logo span {
+  color: var(--red);
 }
 
 .social-links {
-    margin: 7px 0;
-}
-
-.social-links a {
-    color: #ffaaaa;
-    text-decoration: none;
-    margin: 0 12px;
-    font-size: 13px;
+  display: flex;
+  justify-content: center;
+  gap: 22px;
+  margin: 18px 0;
 }
 
 .social-links a:hover {
-    color: white;
+  color: var(--red);
 }
 
-.copyright {
-    color: #aaa;
-    font-size: 10px;
+/* SCROLL REVEAL */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity .8s ease, transform .8s ease;
 }
 
-/* MOBILE */
-@media (max-width: 600px) {
-    header {
-        padding: 18px;
-    }
-
-    header h1 {
-        font-size: 20px;
-    }
-
-    nav {
-        padding: 10px 3px;
-    }
-
-    nav a {
-        margin: 0 5px;
-        font-size: 11px;
-    }
-
-    .hero {
-        min-height: 470px;
-        padding: 30px 25px;
-        background-position: center;
-    }
-
-    .hero h2 {
-        font-size: 42px;
-    }
-
-    .hero p {
-        font-size: 14px;
-    }
-
-    main {
-        padding: 35px 15px;
-    }
-
-    section {
-        padding: 25px 20px;
-    }
-
-    section h2 {
-        font-size: 22px;
-    }
-
-    section p {
-        font-size: 14px;
-    }
-
-    .rule-card {
-        gap: 10px;
-        padding: 17px 12px;
-    }
-
-    .rule-number {
-        font-size: 17px;
-        min-width: 65px;
-    }
-
-    .rule-card h3 {
-        font-size: 17px;
-    }
-
-    .bleague h3 {
-        font-size: 22px;
-    }
-
-    footer {
-        padding: 9px 3px;
-    }
-
-    .social-links a {
-        margin: 0 7px;
-        font-size: 12px;
-    }
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-/* REDUCE MOTION */
-@media (prefers-reduced-motion: reduce) {
-    html { scroll-behavior: auto; }
+/* RESPONSIVE */
+@media (max-width: 700px) {
+  header {
+    padding: 15px 5%;
+    flex-direction: column;
+    gap: 10px;
+  }
 
-    *, *::before, *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-    }
+  .logo {
+    font-size: 19px;
+  }
+
+  nav {
+    gap: 15px;
+    font-size: 11px;
+  }
+
+  .hero {
+    height: 65vh;
+    min-height: 400px;
+  }
+
+  main {
+    padding: 55px 18px 70px;
+  }
+
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .game-box {
+    padding: 28px 15px;
+  }
+
+  .score-board {
+    gap: 20px;
+  }
+
+  .quiz-box {
+    padding: 22px 16px;
+  }
+
+  .quiz-question {
+    font-size: 18px;
+  }
 }
 </style>
 </head>
 
 <body>
 
-<!-- HEADER -->
 <header>
-    <h1>BASKETBALL <span>BOOK</span></h1>
+  <div class="logo">BASKETBALL <span>BOOK</span></div>
+
+  <nav>
+    <a href="#charm">魅力</a>
+    <a href="#rules">ルール</a>
+    <a href="#bleague">B.LEAGUE</a>
+    <a href="#game">GAME</a>
+  </nav>
 </header>
 
-<!-- NAVIGATION -->
-<nav>
-    <a href="#about">バスケの魅力</a>
-    <a href="#game">B.LEAGUE</a>
-    <a href="#allstar">ALL-STAR</a>
-    <a href="#rules">ルール</a>
-</nav>
-
-<!-- MAIN VISUAL -->
+<!-- HERO -->
 <div class="hero">
-    <div class="hero-content">
-        <h2>
-            FEEL THE<br>
-            <span>GAME.</span>
-        </h2>
-
-        <p>
-            知らなかった世界が、ここにある。<br>
-            一瞬のプレーが、心を動かす。<br>
-            バスケットボールの熱狂を体感しよう。
-        </p>
-
-        <a href="#about">DISCOVER MORE →</a>
-    </div>
+  <div class="hero-content">
+    <h1>BASKETBALL<br>BOOK</h1>
+    <div class="hero-line"></div>
+    <p>FEEL THE GAME.</p>
+  </div>
 </div>
 
-<!-- MOVING MESSAGE -->
 <div class="marquee">
-    <p>
-        ONE TEAM. ONE DREAM. &nbsp; BASKETBALL IS AMAZING.
-        &nbsp; FEEL THE GAME. &nbsp;
-        ONE TEAM. ONE DREAM. &nbsp; BASKETBALL IS AMAZING.
-    </p>
+  <div class="marquee-track">
+    BASKETBALL IS MORE THAN A GAME. ★ FEEL THE GAME. ★ B.LEAGUE ★
+    BASKETBALL IS MORE THAN A GAME. ★ FEEL THE GAME. ★ B.LEAGUE ★
+  </div>
 </div>
 
 <main>
 
 <!-- SECTION 01 -->
-<section id="about">
-    <h2><span>01.</span> バスケットボールの魅力</h2>
+<section id="charm" class="reveal">
+  <div class="section-number">01. ABOUT BASKETBALL</div>
+  <h2 class="section-title">バスケットボールの魅力</h2>
+  <div class="red-line"></div>
 
-    <p>
-        バスケットボールは、スピード・テクニック・
-        チームワークが一つになったエキサイティングなスポーツです。
-        <br><br>
-        高く飛び上がるダンクシュート、試合終了間際の逆転劇、
-        選手同士の激しい攻防。
-        <br><br>
-        <span class="highlight">
-        ボールがリングに入った瞬間の興奮は、誰でも楽しめます。
-        </span>
-        <br><br>
-        まずは一度、バスケットボールの世界をのぞいてみませんか？
-    </p>
+  <p class="section-description">
+    スピード、迫力、チームワーク。
+    バスケットボールには、観る人を夢中にさせる魅力が詰まっています。
+  </p>
 
-    <div class="cards">
-        <div class="card">
-            <div class="icon">🔥</div>
-            <h3>スピード感</h3>
-            <p>攻守が一瞬で入れ替わる。最後まで勝敗がわからない展開が魅力！</p>
-        </div>
-
-        <div class="card">
-            <div class="icon">🤝</div>
-            <h3>チームワーク</h3>
-            <p>パスや連携で仲間とゴールを目指す。チーム全員の力が勝利につながる！</p>
-        </div>
-
-        <div class="card">
-            <div class="icon">⚡</div>
-            <h3>選手の個性</h3>
-            <p>ダンクや3ポイントシュートなど、選手ごとの得意なプレーに注目！</p>
-        </div>
+  <div class="card-grid">
+    <div class="card">
+      <div class="card-icon">🏀</div>
+      <h3>スピード感</h3>
+      <p>攻守の切り替えが速く、試合の流れが次々と変わる。最後まで目が離せません。</p>
     </div>
 
-    <!-- BASIC RULES -->
-    <h3 class="sub-title" id="rules">🏀 初心者でもわかる！バスケットボールのルール</h3>
-
-    <p>
-        まずは基本のルールを覚えよう！
-        これだけ知っておけば、試合観戦がもっと楽しくなる。
-    </p>
-
-    <div class="rule-card">
-        <div class="rule-number">01</div>
-        <div>
-            <h3>試合の目的</h3>
-            <p>相手チームより多く得点することが目的。試合終了時に得点が多いチームが勝利！</p>
-        </div>
+    <div class="card">
+      <div class="card-icon">🔥</div>
+      <h3>迫力あるプレー</h3>
+      <p>豪快なダンクや正確な3ポイントシュートなど、会場を沸かせるプレーが魅力です。</p>
     </div>
 
-    <div class="rule-card">
-        <div class="rule-number">02</div>
-        <div>
-            <h3>試合時間</h3>
-            <p>B.LEAGUEは10分間のクォーターを4回行う。合計40分間で勝負する！同点の場合は延長戦になる。</p>
-        </div>
+    <div class="card">
+      <div class="card-icon">🤝</div>
+      <h3>チームワーク</h3>
+      <p>一人ではなく、5人が協力して得点を目指す。連携プレーにも注目です。</p>
     </div>
 
-    <div class="rule-card">
-        <div class="rule-number">03</div>
-        <div>
-            <h3>得点の仕組み</h3>
-            <p>フリースローは1点、3ポイントラインの内側からのシュートは2点、外側から決めると3点！</p>
-        </div>
+    <div class="card">
+      <div class="card-icon">🎉</div>
+      <h3>会場の一体感</h3>
+      <p>応援や音楽、演出によって、観客も一緒に試合を盛り上げられます。</p>
+    </div>
+  </div>
+
+  <!-- RULES -->
+  <h3 class="sub-title" id="rules">初心者向け！バスケットボールの基本ルール</h3>
+
+  <div class="card-grid">
+    <div class="card">
+      <h3><span class="rule-number">01</span>試合の目的</h3>
+      <p>相手のゴールにボールを入れて得点し、試合終了時に相手より多く得点したチームが勝ちです。</p>
     </div>
 
-    <div class="rule-card">
-        <div class="rule-number">04</div>
-        <div>
-            <h3>ドリブル</h3>
-            <p>ボールを床につきながら移動すること。ボールを持ったまま歩き続けることはできない。</p>
-        </div>
+    <div class="card">
+      <h3><span class="rule-number">02</span>試合時間</h3>
+      <p>B.LEAGUEでは10分間のクォーターを4回行います。合計40分間です。</p>
     </div>
 
-    <div class="rule-card">
-        <div class="rule-number">05</div>
-        <div>
-            <h3>トラベリング</h3>
-            <p>ボールを持ったまま、決められた範囲を超えて歩く反則。ドリブルをせずに動きすぎると反則になる。</p>
-        </div>
+    <div class="card">
+      <h3><span class="rule-number">03</span>得点の種類</h3>
+      <p>フリースローは1点、3ポイントラインの内側からのシュートは2点、外側からは3点です。</p>
     </div>
 
-    <div class="rule-card">
-        <div class="rule-number">06</div>
-        <div>
-            <h3>ファウル</h3>
-            <p>相手を不当に押したり、たたいたりするなどの反則。状況によって相手にフリースローなどが与えられる。</p>
-        </div>
+    <div class="card">
+      <h3><span class="rule-number">04</span>ドリブル</h3>
+      <p>ボールを床につきながら移動します。ボールを持ったまま歩き続けることはできません。</p>
     </div>
 
-    <div class="rule-card">
-        <div class="rule-number">07</div>
-        <div>
-            <h3>24秒ルール</h3>
-            <p>攻撃側は原則として24秒以内にシュートを打たなければならない。スピード感のある試合展開につながるルール！</p>
-        </div>
+    <div class="card">
+      <h3><span class="rule-number">05</span>トラベリング</h3>
+      <p>ボールを持ったまま、決められた範囲を超えて歩く反則です。</p>
     </div>
 
-    <p style="margin-top:25px;">
-        <span class="highlight">観戦ポイント：</span>
-        3ポイントシュート、速攻、ダンク、試合終了間際の攻防に注目しよう！
-    </p>
+    <div class="card">
+      <h3><span class="rule-number">06</span>ファウル</h3>
+      <p>相手を押したり、腕をたたいたりするなど、不正な接触が反則になることがあります。</p>
+    </div>
+
+    <div class="card">
+      <h3><span class="rule-number">07</span>24秒ルール</h3>
+      <p>攻撃側は原則として24秒以内にシュートを打たなければなりません。</p>
+    </div>
+  </div>
 </section>
 
 <!-- SECTION 02 -->
-<section id="game">
-    <h2><span>02.</span> B.LEAGUEを観に行こう</h2>
+<section id="bleague" class="reveal">
+  <div class="section-number">02. B.LEAGUE</div>
+  <h2 class="section-title">B.LEAGUEを観に行こう</h2>
+  <div class="red-line"></div>
 
+  <p class="section-description">
+    日本のプロバスケットボールリーグ「B.LEAGUE」。
+    テレビや動画だけでは味わえない、現地観戦ならではの楽しさがあります。
+  </p>
+
+  <div class="bleague-banner">
+    <h3>THE EXCITEMENT IS HERE.</h3>
     <p>
-        日本のプロバスケットボールリーグ「B.LEAGUE」。
-        <br><br>
-        目の前で繰り広げられる迫力満点のプレー、
-        会場を包み込む歓声、音楽や照明による演出。
-        <br><br>
-        テレビや動画では味わえない、
-        <span class="highlight">現地観戦ならではの感動</span>
-        が待っています。
-        <br><br>
-        友達と一緒に、家族と一緒に、もちろん一人でも楽しめます。
+      選手の迫力あるプレー、会場を包む歓声、試合を盛り上げる演出。
+      初めてでも楽しめるのが、バスケットボール観戦の魅力です。
     </p>
+    <a class="official-link" href="https://www.bleague.jp/" target="_blank" rel="noopener noreferrer">
+      B.LEAGUE公式サイトを見る →
+    </a>
+  </div>
 
-    <!-- ALL STAR -->
-    <h3 class="sub-title" id="allstar">🌟 B.LEAGUE ALL-STAR</h3>
+  <h3 class="sub-title">B.LEAGUE ALL-STAR</h3>
 
-    <div class="allstar">
-        <h3>ALL STAR GAME</h3>
-        <p>
-            日本を代表するスター選手たちが集まる、特別なバスケットボールイベント！
-        </p>
-        <p>
-            普段のリーグ戦とは違う組み合わせや演出で、
-            バスケットボールの魅力を思いきり楽しめる。
-        </p>
+  <p class="section-description">
+    オールスターイベントでは、ファンの注目を集める選手たちが集まり、
+    普段のリーグ戦とはひと味違う楽しさを届けます。
+    開催年によって実施内容は異なります。
+  </p>
+
+  <div class="card-grid">
+    <div class="card">
+      <div class="card-icon">⭐</div>
+      <h3>ALL-STAR GAME</h3>
+      <p>人気選手や注目選手たちが集結。特別な対戦を楽しめます。</p>
     </div>
 
-    <div class="cards">
-        <div class="card">
-            <div class="icon">🏀</div>
-            <h3>オールスターゲーム</h3>
-            <p>選ばれた選手たちが集まり、普段とは違う特別なチームで試合を行う。</p>
-        </div>
-
-        <div class="card">
-            <div class="icon">🚀</div>
-            <h3>ダンクコンテスト</h3>
-            <p>選手たちが豪快で華麗なダンクを披露！ジャンプ力や創造力に注目。</p>
-        </div>
-
-        <div class="card">
-            <div class="icon">🎯</div>
-            <h3>3ポイントコンテスト</h3>
-            <p>3ポイントシュートの正確さを競うイベント。連続でシュートが決まる瞬間は大興奮！</p>
-        </div>
-
-        <div class="card">
-            <div class="icon">🎉</div>
-            <h3>会場イベント</h3>
-            <p>音楽やダンス、ファン向け企画など、試合以外にも楽しめる催しが行われることがある。</p>
-        </div>
+    <div class="card">
+      <div class="card-icon">🚀</div>
+      <h3>DUNK CONTEST</h3>
+      <p>高さと技術を競うダンクシュート。迫力満点のパフォーマンスに注目です。</p>
     </div>
 
-    <p style="margin-top:25px;">
-        <span class="highlight">注目ポイント：</span>
-        オールスターは年度によって企画や実施内容が異なるので、最新情報もチェックしよう！
-    </p>
-
-    <!-- LOCAL REVITALIZATION -->
-    <h3 class="sub-title">🏙️ バスケットボールと地方創生</h3>
-
-    <p>
-        バスケットボールは、試合をするだけのスポーツではありません。
-        地域の人々をつなぎ、街を元気にする力も持っています。
-    </p>
-
-    <div class="cards">
-        <div class="card">
-            <div class="icon">🏙️</div>
-            <h3>地域のにぎわい</h3>
-            <p>試合を観に来た人が飲食店や観光地を訪れることで、街に人の流れが生まれる。</p>
-        </div>
-
-        <div class="card">
-            <div class="icon">👨‍👩‍👧</div>
-            <h3>子どもたちの未来</h3>
-            <p>バスケットボール教室や選手との交流を通じて、子どもたちに夢や目標を届ける。</p>
-        </div>
-
-        <div class="card">
-            <div class="icon">🤝</div>
-            <h3>地域のつながり</h3>
-            <p>地元のチームを応援することで、世代を超えた交流や地域への愛着が生まれる。</p>
-        </div>
+    <div class="card">
+      <div class="card-icon">🎯</div>
+      <h3>3 POINT CONTEST</h3>
+      <p>3ポイントシュートの精度とスピードを競う、緊張感のあるイベントです。</p>
     </div>
 
-    <div class="bleague">
-        <h3>THE GAME IS WAITING.</h3>
-        <p>
-            次の週末は、バスケットボール観戦へ。<br>
-            あなたも会場で熱狂を体験しよう！
-        </p>
-
-        <a href="https://www.bleague.jp/"
-           target="_blank"
-           rel="noopener noreferrer">
-            B.LEAGUE公式サイト →
-        </a>
+    <div class="card">
+      <div class="card-icon">🎪</div>
+      <h3>会場イベント</h3>
+      <p>試合以外にも、ファンが楽しめる企画や地域と連携したイベントが開催されることがあります。</p>
     </div>
+  </div>
+
+  <h3 class="sub-title">バスケットボールが地域を盛り上げる</h3>
+
+  <div class="card-grid">
+    <div class="card">
+      <h3>🏙️ 地域の活性化</h3>
+      <p>試合観戦をきっかけに人が集まり、飲食店や商店街など地域のお店にも人の流れが生まれます。</p>
+    </div>
+
+    <div class="card">
+      <h3>👦 子どもたちの夢</h3>
+      <p>プロ選手のプレーを間近で見ることが、スポーツへの興味や夢につながります。</p>
+    </div>
+
+    <div class="card">
+      <h3>🤝 人と人のつながり</h3>
+      <p>同じチームを応援することで、年齢や立場を超えた交流が生まれます。</p>
+    </div>
+
+    <div class="card">
+      <h3>❤️ 地元への愛着</h3>
+      <p>地元のチームを応援することが、地域を好きになるきっかけになります。</p>
+    </div>
+  </div>
+</section>
+
+<!-- MINI GAME -->
+<section id="game" class="reveal">
+  <div class="section-number">03. PLAY TIME</div>
+  <h2 class="section-title">ちょっと遊んでみよう！</h2>
+  <div class="red-line"></div>
+
+  <p class="section-description">
+    バスケットボールを知ったら、実際にチャレンジ！
+    あなたは何本シュートを決められる？
+  </p>
+
+  <!-- FREE THROW GAME -->
+  <div class="game-box">
+    <div class="game-label">MINI GAME 01</div>
+    <h3>FREE THROW CHALLENGE</h3>
+    <p class="game-description">制限時間内にシュートを決めよう！</p>
+
+    <div class="basketball" id="basketball">🏀</div>
+
+    <div class="score-board">
+      <div class="score-item">
+        <small>TIME</small>
+        <strong id="time">20</strong>
+      </div>
+
+      <div class="score-item">
+        <small>SCORE</small>
+        <strong id="score">0</strong>
+      </div>
+
+      <div class="score-item">
+        <small>SHOTS</small>
+        <strong id="shots">0</strong>
+      </div>
+    </div>
+
+    <div class="game-message" id="gameMessage">
+      STARTを押してゲーム開始！
+    </div>
+
+    <button class="game-button" id="startButton" onclick="startGame()">
+      GAME START
+    </button>
+
+    <button class="game-button secondary" id="shootButton" onclick="shoot()" disabled>
+      🏀 SHOOT!!
+    </button>
+  </div>
+
+  <!-- QUIZ GAME -->
+  <h3 class="sub-title">MINI GAME 02｜バスケクイズ</h3>
+
+  <p class="section-description">
+    バスケットボールの知識を試してみよう！
+    全問正解を目指せ！
+  </p>
+
+  <div class="quiz-box">
+    <div class="quiz-progress" id="quizProgress">QUESTION 1 / 5</div>
+
+    <div class="quiz-question" id="quizQuestion">
+      バスケットボールの試合で、1チームがコートに出せる選手は何人？
+    </div>
+
+    <div class="quiz-options" id="quizOptions"></div>
+
+    <div class="quiz-feedback" id="quizFeedback">
+      正しいと思う答えを選んでください！
+    </div>
+
+    <button class="game-button quiz-next" id="quizNext" onclick="nextQuiz()" style="display:none;">
+      NEXT QUESTION →
+    </button>
+  </div>
 </section>
 
 </main>
 
-<!-- FOOTER -->
 <footer>
-    <p>CONTACT：info@example.com</p>
+  <div class="footer-logo">BASKETBALL <span>BOOK</span></div>
+  <p>バスケットボールの魅力を、もっと多くの人へ。</p>
 
-    <div class="social-links">
-        <a href="https://www.instagram.com/">Instagram</a>
-        <a href="https://www.facebook.com/">Facebook</a>
-        <a href="https://x.com/">X</a>
-    </div>
+  <div class="social-links">
+    <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">Instagram</a>
+    <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">Facebook</a>
+    <a href="https://x.com/" target="_blank" rel="noopener noreferrer">X</a>
+  </div>
 
-    <p class="copyright">
-        &copy; 2026 BASKETBALL BOOK
-    </p>
+  <p>CONTACT : info@example.com</p>
+  <p style="margin-top:15px;">© BASKETBALL BOOK</p>
 </footer>
+
+<script>
+
+/* FREE THROW GAME */
+let score = 0;
+let shots = 0;
+let timeLeft = 20;
+let gameActive = false;
+let gameTimer = null;
+
+function startGame() {
+  if (gameActive) return;
+
+  score = 0;
+  shots = 0;
+  timeLeft = 20;
+  gameActive = true;
+
+  document.getElementById("score").textContent = score;
+  document.getElementById("shots").textContent = shots;
+  document.getElementById("time").textContent = timeLeft;
+
+  document.getElementById("gameMessage").textContent =
+    "ゲーム開始！シュートを決めよう！";
+
+  document.getElementById("startButton").disabled = true;
+  document.getElementById("shootButton").disabled = false;
+
+  gameTimer = setInterval(() => {
+    timeLeft--;
+    document.getElementById("time").textContent = timeLeft;
+
+    if (timeLeft <= 0) {
+      endGame();
+    }
+  }, 1000);
+}
+
+function shoot() {
+  if (!gameActive) return;
+
+  shots++;
+
+  const ball = document.getElementById("basketball");
+
+  ball.classList.remove("shoot");
+  void ball.offsetWidth;
+  ball.classList.add("shoot");
+
+  // シュート成功率を約60%に設定
+  const success = Math.random() < 0.6;
+
+  if (success) {
+    score++;
+    document.getElementById("gameMessage").textContent =
+      "🏀 SWISH!! ナイスシュート！";
+  } else {
+    document.getElementById("gameMessage").textContent =
+      "惜しい！次のシュートに挑戦！";
+  }
+
+  document.getElementById("score").textContent = score;
+  document.getElementById("shots").textContent = shots;
+}
+
+function endGame() {
+  gameActive = false;
+  clearInterval(gameTimer);
+
+  document.getElementById("shootButton").disabled = true;
+  document.getElementById("startButton").disabled = false;
+
+  document.getElementById("gameMessage").textContent =
+    "TIME UP！ " + shots + "本中 " + score + "本成功！お疲れさま！";
+}
+
+/* BASKETBALL QUIZ */
+const quizData = [
+  {
+    question: "バスケットボールの試合で、1チームがコートに出せる選手は何人？",
+    options: ["3人", "5人", "7人"],
+    answer: 1,
+    explanation: "正解！バスケットボールは1チーム5人でプレーします。"
+  },
+  {
+    question: "3ポイントシュートが入ると何点？",
+    options: ["1点", "2点", "3点"],
+    answer: 2,
+    explanation: "正解！3ポイントラインの外から決めると3点です。"
+  },
+  {
+    question: "B.LEAGUEの1クォーターは何分？",
+    options: ["8分", "10分", "12分"],
+    answer: 1,
+    explanation: "正解！B.LEAGUEは10分×4クォーターです。"
+  },
+  {
+    question: "攻撃側がシュートを打つまでの基本制限時間は？",
+    options: ["12秒", "24秒", "30秒"],
+    answer: 1,
+    explanation: "正解！原則24秒以内にシュートを打つ必要があります。"
+  },
+  {
+    question: "フリースローが成功すると何点？",
+    options: ["1点", "2点", "3点"],
+    answer: 0,
+    explanation: "正解！フリースローは1本成功するごとに1点です。"
+  }
+];
+
+let quizIndex = 0;
+let quizScore = 0;
+let quizAnswered = false;
+
+function showQuiz() {
+  const quiz = quizData[quizIndex];
+
+  document.getElementById("quizProgress").textContent =
+    "QUESTION " + (quizIndex + 1) + " / " + quizData.length;
+
+  document.getElementById("quizQuestion").textContent = quiz.question;
+  document.getElementById("quizFeedback").textContent =
+    "正しいと思う答えを選んでください！";
+
+  document.getElementById("quizNext").style.display = "none";
+
+  const optionsArea = document.getElementById("quizOptions");
+  optionsArea.innerHTML = "";
+
+  quizAnswered = false;
+
+  quiz.options.forEach((option, index) => {
+    const button = document.createElement("button");
+    button.className = "quiz-option";
+    button.textContent = option;
+
+    button.addEventListener("click", () => {
+      answerQuiz(index);
+    });
+
+    optionsArea.appendChild(button);
+  });
+}
+
+function answerQuiz(selectedIndex) {
+  if (quizAnswered) return;
+
+  quizAnswered = true;
+
+  const quiz = quizData[quizIndex];
+  const buttons = document.querySelectorAll(".quiz-option");
+
+  buttons.forEach((button, index) => {
+    button.disabled = true;
+
+    if (index === quiz.answer) {
+      button.classList.add("correct");
+    } else if (index === selectedIndex) {
+      button.classList.add("wrong");
+    }
+  });
+
+  if (selectedIndex === quiz.answer) {
+    quizScore++;
+    document.getElementById("quizFeedback").textContent =
+      "⭕ " + quiz.explanation;
+  } else {
+    document.getElementById("quizFeedback").textContent =
+      "❌ 残念！正解は「" + quiz.options[quiz.answer] + "」。 " +
+      quiz.explanation;
+  }
+
+  const nextButton = document.getElementById("quizNext");
+
+  if (quizIndex === quizData.length - 1) {
+    nextButton.textContent = "RESULTを見る";
+  } else {
+    nextButton.textContent = "NEXT QUESTION →";
+  }
+
+  nextButton.style.display = "inline-block";
+}
+
+function nextQuiz() {
+  if (!quizAnswered) return;
+
+  quizIndex++;
+
+  if (quizIndex >= quizData.length) {
+    showQuizResult();
+    return;
+  }
+
+  showQuiz();
+}
+
+function showQuizResult() {
+  document.getElementById("quizProgress").textContent = "QUIZ RESULT";
+
+  document.getElementById("quizQuestion").textContent =
+    "あなたの正解数は " + quizScore + " / " + quizData.length + " 問！";
+
+  document.getElementById("quizOptions").innerHTML = "";
+
+  let message = "";
+
+  if (quizScore === 5) {
+    message = "🏆 PERFECT!! バスケ博士！";
+  } else if (quizScore >= 3) {
+    message = "🔥 NICE!! バスケの知識が身についています！";
+  } else {
+    message = "🏀 GOOD TRY!! これからもっと詳しくなろう！";
+  }
+
+  document.getElementById("quizFeedback").textContent = message;
+
+  const nextButton = document.getElementById("quizNext");
+  nextButton.textContent = "もう一度チャレンジ！";
+  nextButton.style.display = "inline-block";
+  nextButton.onclick = restartQuiz;
+}
+
+function restartQuiz() {
+  quizIndex = 0;
+  quizScore = 0;
+  showQuiz();
+}
+
+/* SCROLL REVEAL */
+const revealElements = document.querySelectorAll(".reveal");
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("visible");
+      observer.unobserve(entry.target);
+    }
+  });
+}, {
+  threshold: 0.12
+});
+
+revealElements.forEach(element => {
+  observer.observe(element);
+});
+
+/* INITIALIZE */
+showQuiz();
+
+</script>
 
 </body>
 </html>
