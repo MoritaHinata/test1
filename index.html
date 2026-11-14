@@ -182,4 +182,482 @@ section {
 }
 
 .card:hover {
-    transform: translateY
+    transform: translateY(-10px);
+    border-color: #ff3333;
+    box-shadow: 0 10px 30px rgba(255,0,0,0.2);
+}
+
+.card h3 {
+    color: #ff5555;
+    font-size: 22px;
+    margin-bottom: 12px;
+}
+
+.card p {
+    color: #eeeeee;
+    font-size: 16px;
+}
+
+/* オールスター */
+.allstar {
+    background: linear-gradient(135deg, #300000, #151515);
+}
+
+.allstar-banner {
+    text-align: center;
+    padding: 35px 20px;
+    margin-bottom: 35px;
+    border: 2px solid #b90000;
+    border-radius: 15px;
+    background: rgba(0,0,0,0.35);
+}
+
+.allstar-banner h3 {
+    font-size: clamp(30px, 6vw, 55px);
+    color: white;
+    text-shadow: 0 0 15px red;
+}
+
+.allstar-banner p {
+    font-size: 18px;
+}
+
+/* 地方創生 */
+.local {
+    background: #171717;
+}
+
+.local-message {
+    background: #292020;
+    border-left: 5px solid #cc0000;
+    padding: 25px;
+    margin-top: 35px;
+    border-radius: 8px;
+    font-size: 18px;
+}
+
+/* ルール */
+.rules {
+    background: #111111;
+}
+
+.rule-card {
+    background: #202020;
+    border-radius: 12px;
+    padding: 25px;
+    margin-bottom: 20px;
+    border-left: 5px solid #cc0000;
+    transition: 0.3s;
+}
+
+.rule-card:hover {
+    background: #302020;
+    transform: translateX(5px);
+}
+
+.rule-number {
+    color: #ff5555;
+    font-size: 25px;
+    font-weight: 900;
+}
+
+.rule-card h3 {
+    font-size: 23px;
+    margin: 5px 0;
+}
+
+.rule-card p {
+    font-size: 17px;
+    color: #eeeeee;
+}
+
+/* 観戦案内 */
+.watch {
+    text-align: center;
+    background: linear-gradient(135deg, #650000, #1b0000);
+}
+
+.watch h2 {
+    font-size: clamp(28px, 5vw, 42px);
+    margin-bottom: 15px;
+}
+
+.watch p {
+    font-size: 18px;
+    margin-bottom: 25px;
+}
+
+.watch-button {
+    display: inline-block;
+    background: white;
+    color: #990000;
+    padding: 15px 35px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 900;
+    transition: 0.3s;
+}
+
+.watch-button:hover {
+    background: #ff3333;
+    color: white;
+    transform: scale(1.08);
+}
+
+/* フッター */
+footer {
+    background: #440000;
+    padding: 25px 15px;
+    text-align: center;
+    font-size: 14px;
+}
+
+footer a {
+    color: white;
+    margin: 0 8px;
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: #ffaaaa;
+}
+
+/* アニメーション */
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes glow {
+    from {
+        transform: scale(0.8);
+        opacity: 0.4;
+    }
+    to {
+        transform: scale(1.3);
+        opacity: 0.9;
+    }
+}
+
+@keyframes ticker {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(-100%);
+    }
+}
+
+/* スマートフォン対応 */
+@media (max-width: 600px) {
+    header h1 {
+        font-size: 23px;
+    }
+
+    nav {
+        gap: 12px;
+        font-size: 13px;
+    }
+
+    .hero {
+        min-height: 420px;
+    }
+
+    section {
+        padding: 55px 6%;
+    }
+
+    .card {
+        padding: 22px;
+    }
+}
+
+/* 動きを少なくしたい人への配慮 */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>BASKETBALL BOOK</h1>
+</header>
+
+<nav>
+    <a href="#charm">バスケの魅力</a>
+    <a href="#allstar">オールスター</a>
+    <a href="#local">地方創生</a>
+    <a href="#rules">ルール</a>
+</nav>
+
+<div class="hero">
+    <div class="hero-content">
+        <h2>FEEL THE GAME.</h2>
+        <p>バスケットボールが、あなたの日常を熱くする。</p>
+        <a href="#charm" class="hero-button">DISCOVER MORE →</a>
+    </div>
+</div>
+
+<div class="ticker">
+    <span>ONE TEAM. ONE DREAM. BASKETBALL IS AMAZING. ONE TEAM. ONE DREAM. BASKETBALL IS AMAZING.</span>
+</div>
+
+<main>
+
+<!-- セクション1 -->
+<section id="charm">
+    <h2 class="section-title">バスケットボールの魅力</h2>
+    <p class="section-lead">
+        知れば知るほど、試合がもっと面白くなる！
+    </p>
+
+    <div class="cards">
+        <div class="card">
+            <h3>🔥 スピード感</h3>
+            <p>
+                攻守が一瞬で入れ替わるスピード感が魅力。
+                最後の1秒まで勝敗がわからない試合展開に注目！
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>🏀 チームワーク</h3>
+            <p>
+                パス、ドリブル、シュート。
+                仲間と協力してゴールを目指す姿は感動的！
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>⚡ 選手の個性</h3>
+            <p>
+                豪快なダンク、正確な3ポイントシュート、
+                驚くようなパス。選手それぞれの個性を楽しもう！
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- オールスター -->
+<section id="allstar" class="allstar">
+    <h2 class="section-title">B.LEAGUE ALL-STAR</h2>
+    <p class="section-lead">
+        日本のバスケットボール界を代表する選手たちが集結！
+    </p>
+
+    <div class="allstar-banner">
+        <h3>ALL STAR GAME</h3>
+        <p>夢のスター選手たちが同じ舞台に！</p>
+    </div>
+
+    <div class="cards">
+        <div class="card">
+            <h3>🌟 スター選手が集結</h3>
+            <p>
+                ファンから注目される選手たちが集まり、
+                普段のリーグ戦とは違った特別な試合を楽しめる。
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>🎉 特別なイベント</h3>
+            <p>
+                試合だけでなく、選手との交流やさまざまな企画、
+                会場ならではの演出も楽しみのひとつ。
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>🤝 バスケの魅力を全国へ</h3>
+            <p>
+                全国のファンが一緒に盛り上がることで、
+                バスケットボールの楽しさをさらに広げる。
+            </p>
+        </div>
+    </div>
+
+    <p class="local-message">
+        オールスターは、選手だけでなくファンや地域も一緒に盛り上がれる、
+        バスケットボールの魅力が詰まった特別なイベントです。
+        開催地の観光や地域の文化にも注目してみよう！
+    </p>
+</section>
+
+<!-- 地方創生 -->
+<section id="local" class="local">
+    <h2 class="section-title">バスケットボールと地方創生</h2>
+    <p class="section-lead">
+        スポーツには、地域を元気にする力がある。
+    </p>
+
+    <div class="cards">
+        <div class="card">
+            <h3>🏙️ 地域のにぎわい</h3>
+            <p>
+                試合の日には多くの人が会場に集まる。
+                飲食店や商店街、観光施設への人の流れが生まれる。
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>👨‍👩‍👧‍👦 子どもたちの未来</h3>
+            <p>
+                バスケットボール教室や学校との交流を通じて、
+                子どもたちがスポーツに触れる機会を増やせる。
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>🤝 地域のつながり</h3>
+            <p>
+                年齢や立場を超えて、同じチームを応援する。
+                スポーツが地域の人々をつなぐきっかけになる。
+            </p>
+        </div>
+    </div>
+
+    <div class="local-message">
+        <h3>バスケットボールが地域を変える！</h3>
+        <p>
+            地元のクラブを応援することは、地域を応援することにもつながる。
+            試合観戦をきっかけに街を訪れ、食事や観光を楽しむ。
+            その積み重ねが、地域の魅力を全国へ発信する力になる。
+        </p>
+    </div>
+</section>
+
+<!-- ルール -->
+<section id="rules" class="rules">
+    <h2 class="section-title">初心者でもわかる！バスケのルール</h2>
+    <p class="section-lead">
+        まずはこの6つを覚えれば、試合がもっと楽しくなる！
+    </p>
+
+    <div class="rule-card">
+        <div class="rule-number">RULE 01</div>
+        <h3>🏀 試合の目的</h3>
+        <p>
+            相手チームより多く得点することが目的。
+            最後に得点が多いチームが勝利！
+        </p>
+    </div>
+
+    <div class="rule-card">
+        <div class="rule-number">RULE 02</div>
+        <h3>⏱️ 試合時間</h3>
+        <p>
+            B.LEAGUEの試合は10分間のクォーターを4回行う。
+            合計40分間で勝負する！
+        </p>
+    </div>
+
+    <div class="rule-card">
+        <div class="rule-number">RULE 03</div>
+        <h3>🎯 得点の仕組み</h3>
+        <p>
+            フリースローは1点、通常のシュートは2点、
+            3ポイントラインの外から決めると3点！
+        </p>
+    </div>
+
+    <div class="rule-card">
+        <div class="rule-number">RULE 04</div>
+        <h3>🏃 ドリブル</h3>
+        <p>
+            ボールを床につきながら移動すること。
+            ボールを持ったまま歩き続けることはできない。
+        </p>
+    </div>
+
+    <div class="rule-card">
+        <div class="rule-number">RULE 05</div>
+        <h3>🤝 パス</h3>
+        <p>
+            仲間にボールを渡すプレー。
+            チーム全員で協力してシュートチャンスを作ろう！
+        </p>
+    </div>
+
+    <div class="rule-card">
+        <div class="rule-number">RULE 06</div>
+        <h3>🚨 ファウル</h3>
+        <p>
+            相手を不当に押したり、たたいたりするなどの
+            反則行為。状況によって相手にフリースローなどが与えられる。
+        </p>
+    </div>
+
+    <p class="local-message">
+        <strong>観戦するときの注目ポイント！</strong><br>
+        3ポイントシュートが決まる瞬間、素早いパス回し、
+        守備でボールを奪う瞬間に注目してみよう！
+    </p>
+</section>
+
+<!-- 観戦案内 -->
+<section class="watch">
+    <h2>次は、あなたが会場で体感しよう！</h2>
+    <p>
+        テレビや動画では伝わらない迫力と熱気が、そこにある。<br>
+        初めてでも大丈夫。まずは一度、試合を見に行こう！
+    </p>
+
+    <a class="watch-button"
+       href="https://www.bleague.jp/"
+       target="_blank"
+       rel="noopener noreferrer">
+       B.LEAGUE公式サイトを見る →
+    </a>
+</section>
+
+</main>
+
+<footer>
+    <p>CONTACT：info@example.com</p>
+    <p>
+        <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">Instagram</a>
+        <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">Facebook</a>
+        <a href="https://x.com/" target="_blank" rel="noopener noreferrer">X</a>
+    </p>
+    <p>© 2026 BASKETBALL BOOK</p>
+</footer>
+
+<script>
+// スクロールするとカードが順番に表示される
+const cards = document.querySelectorAll(".card");
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add("show");
+            observer.unobserve(entry.target);
+        }
+    });
+}, {
+    threshold: 0.15
+});
+
+cards.forEach((card) => {
+    observer.observe(card);
+});
+</script>
+
+</body>
+</html>
+```
