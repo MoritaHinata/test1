@@ -7,8 +7,6 @@
 <title>BASKETBALL BOOK</title>
 
 <style>
-
-/* 全体設定 */
 * {
     margin: 0;
     padding: 0;
@@ -21,15 +19,15 @@ html {
 
 body {
     font-family: Arial, "Noto Sans JP", sans-serif;
-    background-color: #111;
+    background: #111;
     color: white;
-    padding-bottom: 125px;
+    padding-bottom: 120px;
 }
 
-/* ヘッダー */
+/* HEADER */
 header {
-    background-color: #440000;
-    padding: 25px 8%;
+    background: #440000;
+    padding: 22px 8%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -37,44 +35,81 @@ header {
 }
 
 header h1 {
-    font-size: 27px;
+    font-size: 25px;
     letter-spacing: 3px;
-    color: white;
 }
 
 header span {
     color: #ff3333;
 }
 
-/* メインビジュアル */
+/* HERO */
 .hero {
-    min-height: 440px;
-    background:
-        radial-gradient(circle at 80% 50%, #8b0000 0%, transparent 35%),
-        linear-gradient(120deg, #160000, #440000, #111);
+    height: 550px;
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 60px 10%;
-    position: relative;
+    padding: 50px 10%;
     overflow: hidden;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(0,0,0,0.9),
+            rgba(30,0,0,0.55),
+            rgba(0,0,0,0.1)
+        ),
+        url("https://pbs.twimg.com/media/HG5KRf1bcAEDldY.jpg")
+        center center / cover no-repeat;
 }
 
-.hero::after {
-    content: "B";
+/* 光の演出 */
+.hero::before {
+    content: "";
     position: absolute;
-    right: 8%;
-    top: 20px;
-    font-size: 300px;
-    font-weight: bold;
-    color: rgba(255,255,255,0.06);
+    inset: 0;
+    background: linear-gradient(
+        120deg,
+        transparent 30%,
+        rgba(255,0,0,0.15),
+        transparent 70%
+    );
+    animation: light 4s infinite alternate;
+}
+
+@keyframes light {
+    from {
+        opacity: 0.2;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    animation: appear 1.2s ease-out;
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(35px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .hero h2 {
-    font-size: 48px;
-    line-height: 1.3;
-    margin-bottom: 20px;
-    z-index: 1;
+    font-size: clamp(38px, 7vw, 75px);
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: 3px;
+    margin-bottom: 25px;
 }
 
 .hero h2 span {
@@ -82,51 +117,79 @@ header span {
 }
 
 .hero p {
-    font-size: 16px;
+    font-size: 17px;
     line-height: 2;
-    color: #ddd;
     margin-bottom: 30px;
-    z-index: 1;
+    color: #eee;
 }
 
 .hero a {
     display: inline-block;
-    width: fit-content;
-    background-color: #cc0000;
+    padding: 15px 35px;
+    background: #cc0000;
     color: white;
-    padding: 14px 35px;
     text-decoration: none;
     font-weight: bold;
-    border-radius: 3px;
+    letter-spacing: 2px;
     transition: 0.3s;
-    z-index: 1;
 }
 
 .hero a:hover {
-    background-color: white;
+    background: white;
     color: #440000;
+    transform: translateY(-4px);
 }
 
-/* メインコンテンツ */
+/* 動くメッセージ */
+.marquee {
+    background: #cc0000;
+    overflow: hidden;
+    white-space: nowrap;
+    padding: 13px 0;
+}
+
+.marquee p {
+    display: inline-block;
+    font-size: 17px;
+    font-weight: bold;
+    letter-spacing: 4px;
+    animation: scroll 18s linear infinite;
+}
+
+@keyframes scroll {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(-100%);
+    }
+}
+
+/* MAIN */
 main {
     max-width: 1100px;
-    margin: 0 auto;
-    padding: 60px 25px;
+    margin: auto;
+    padding: 65px 25px;
     color: #cc0000;
 }
 
 section {
-    background-color: #1d1d1d;
+    background: #1d1d1d;
     padding: 40px;
     margin-bottom: 35px;
     border-left: 5px solid #cc0000;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+    transition: 0.3s;
+}
+
+section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(204,0,0,0.2);
 }
 
 section h2 {
-    font-size: 28px;
+    font-size: 27px;
     color: white;
-    margin-bottom: 20px;
+    margin-bottom: 22px;
     letter-spacing: 2px;
 }
 
@@ -136,63 +199,58 @@ section h2 span {
 
 section p {
     color: #ccc;
-    line-height: 2;
     font-size: 16px;
+    line-height: 2.2;
 }
 
-/* 強調メッセージ */
 .highlight {
     color: #ff4444;
     font-weight: bold;
 }
 
-/* Bリーグ紹介エリア */
+/* B.LEAGUE */
 .bleague {
+    margin-top: 35px;
+    padding: 45px 20px;
     text-align: center;
-    background: linear-gradient(135deg, #440000, #1a0000);
-    border: 1px solid #8b0000;
-    padding: 40px 20px;
-    margin-top: 40px;
+    background: linear-gradient(135deg, #660000, #1a0000);
+    border: 1px solid #990000;
 }
 
 .bleague h3 {
-    color: white;
-    font-size: 25px;
-    margin-bottom: 15px;
+    font-size: 28px;
+    margin-bottom: 20px;
 }
 
 .bleague p {
-    color: #ddd;
     margin-bottom: 25px;
 }
 
 .bleague a {
     display: inline-block;
-    padding: 13px 30px;
-    background-color: white;
+    padding: 15px 35px;
+    background: white;
     color: #440000;
     text-decoration: none;
     font-weight: bold;
-    border-radius: 3px;
     transition: 0.3s;
 }
 
 .bleague a:hover {
-    background-color: #cc0000;
+    background: #cc0000;
     color: white;
 }
 
-/* フッター */
+/* FOOTER */
 footer {
     position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
-    background-color: #440000;
-    color: white;
+    background: #440000;
+    border-top: 2px solid #cc0000;
     text-align: center;
     padding: 12px;
-    border-top: 2px solid #cc0000;
     z-index: 10;
 }
 
@@ -220,33 +278,29 @@ footer p {
     font-size: 10px;
 }
 
-/* スマートフォン対応 */
+/* MOBILE */
 @media (max-width: 600px) {
 
     header {
-        padding: 20px;
+        padding: 18px;
     }
 
     header h1 {
-        font-size: 21px;
+        font-size: 20px;
     }
 
     .hero {
-        min-height: 380px;
-        padding: 40px 25px;
+        height: 470px;
+        padding: 30px 25px;
+        background-position: center;
     }
 
     .hero h2 {
-        font-size: 32px;
+        font-size: 42px;
     }
 
     .hero p {
         font-size: 14px;
-    }
-
-    .hero::after {
-        font-size: 180px;
-        right: 0;
     }
 
     main {
@@ -258,15 +312,19 @@ footer p {
     }
 
     section h2 {
-        font-size: 23px;
+        font-size: 22px;
     }
 
     section p {
         font-size: 14px;
     }
 
+    .bleague h3 {
+        font-size: 22px;
+    }
+
     footer {
-        padding: 10px 5px;
+        padding: 9px 3px;
     }
 
     .social-links a {
@@ -280,27 +338,39 @@ footer p {
 
 <body>
 
-<!-- ヘッダー -->
+<!-- HEADER -->
 <header>
     <h1>BASKETBALL <span>BOOK</span></h1>
 </header>
 
-<!-- メインビジュアル -->
+<!-- MAIN VISUAL -->
 <div class="hero">
-    <h2>
-        FEEL THE<br>
-        <span>GAME.</span>
-    </h2>
+    <div class="hero-content">
+        <h2>
+            FEEL THE<br>
+            <span>GAME.</span>
+        </h2>
 
-    <p>
-        知らなかった世界が、ここにある。<br>
-        バスケットボールの熱狂を体感しよう。
-    </p>
+        <p>
+            知らなかった世界が、ここにある。<br>
+            一瞬のプレーが、心を動かす。<br>
+            バスケットボールの熱狂を体感しよう。
+        </p>
 
-    <a href="#about">DISCOVER MORE →</a>
+        <a href="#about">DISCOVER MORE →</a>
+    </div>
 </div>
 
-<!-- メインコンテンツ -->
+<!-- MOVING MESSAGE -->
+<div class="marquee">
+    <p>
+        ONE TEAM. ONE DREAM. &nbsp; BASKETBALL IS AMAZING.
+        &nbsp; FEEL THE GAME. &nbsp;
+        ONE TEAM. ONE DREAM. &nbsp; BASKETBALL IS AMAZING.
+    </p>
+</div>
+
+<!-- MAIN -->
 <main>
 
     <section id="about">
@@ -309,18 +379,24 @@ footer p {
         </h2>
 
         <p>
-            バスケットボールは、スピード・テクニック・チームワークが
-            一つになったエキサイティングなスポーツです。
+            バスケットボールは、スピード・テクニック・
+            チームワークが一つになったエキサイティングなスポーツです。
             <br><br>
-            高く飛び上がるダンクシュート、試合終了間際の逆転劇、
+
+            高く飛び上がるダンクシュート、
+            試合終了間際の逆転劇、
             選手同士の激しい攻防。
             <br><br>
+
             ルールを知らなくても大丈夫。
             <span class="highlight">
-                ボールがリングに入った瞬間の興奮は、誰でも楽しめます。
+                ボールがリングに入った瞬間の興奮は、
+                誰でも楽しめます。
             </span>
             <br><br>
-            まずは一度、バスケットボールの世界をのぞいてみませんか？
+
+            まずは一度、バスケットボールの世界を
+            のぞいてみませんか？
         </p>
     </section>
 
@@ -332,17 +408,21 @@ footer p {
         <p>
             日本のプロバスケットボールリーグ「B.LEAGUE」。
             <br><br>
+
             目の前で繰り広げられる迫力満点のプレー、
-            会場を包み込む歓声、音楽や照明による演出。
+            会場を包み込む歓声、
+            音楽や照明による演出。
             <br><br>
+
             テレビや動画では味わえない、
             <span class="highlight">
                 現地観戦ならではの感動
             </span>
             が待っています。
             <br><br>
+
             友達と一緒に、家族と一緒に、
-            もちろん一人でも楽しめるのがバスケットボール観戦の魅力です。
+            もちろん一人でも楽しめます。
         </p>
 
         <div class="bleague">
@@ -363,9 +443,8 @@ footer p {
 
 </main>
 
-<!-- フッター -->
+<!-- FOOTER -->
 <footer>
-
     <p>CONTACT：info@example.com</p>
 
     <div class="social-links">
@@ -377,7 +456,6 @@ footer p {
     <p class="copyright">
         &copy; 2026 BASKETBALL BOOK
     </p>
-
 </footer>
 
 </body>
